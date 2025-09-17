@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.contentcards"
+      "bundleIdentifier": "com.adobe.MessagingDemoAppSwiftUI"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,7 +21,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.yourcompany.contentcards"
+      "package": "com.adobe.marketing.mobile.messagingsample"
     },
     "web": {
       "output": "static",
