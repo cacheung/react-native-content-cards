@@ -1,50 +1,183 @@
-# Welcome to your Expo app 👋
+# Adobe Journey Optimizer Content Cards Sample App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple React Native Expo application demonstrating Adobe Journey Optimizer Content Cards implementation.
 
-## Get started
+**This app is ready to run out of the box.** If you want to connect it to your own Adobe Journey Optimizer setup, update the configuration settings below.
 
-1. Install dependencies
+## Features
 
+- **Content Cards Integration** - Display personalized content from Adobe Journey Optimizer
+- **Dark Mode Support** - Light, Dark, and System theme options
+- **Custom Track Actions** - Test different track actions to trigger content
+- **Real-time Refresh** - Dynamic content updates
+- **Cross-platform** - iOS and Android support
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Configuration](#configuration-optional---for-your-own-setup)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Documentation](#documentation)
+
+## Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+- Expo CLI
+- iOS Simulator / Android Emulator
+- Adobe Journey Optimizer setup (only if customizing with your own configuration)
+
+## Configuration (Optional - For Your Own Setup)
+
+**Note: The app works with default demo configuration. Only update these settings if you want to connect to your own Adobe Journey Optimizer setup.**
+
+### 1. Mobile Property App ID
+
+To use your own Adobe Mobile Property, update the App ID in `app/_layout.tsx`:
+
+```typescript
+await MobileCore.initializeWithAppId("YOUR_APP_ID_HERE");
+```
+
+### 2. Surface Configuration
+
+Configure your content card surface in `app/ContentCardsScreen.tsx`:
+
+```typescript
+const surface = 'your surface name'
+```
+
+### 3. App Bundle Identifiers
+
+Update your app identifiers in `app.json`:
+
+**iOS Configuration:**
+```json
+{
+  "ios": {
+    "supportsTablet": true,
+    "bundleIdentifier": "com.yourcompany.yourapp"
+  }
+}
+```
+
+**Android Configuration:**
+```json
+{
+  "android": {
+    "package": "com.yourcompany.yourapp"
+  }
+}
+```
+
+### 4. Adobe Extensions
+
+This project uses the developer version of Adobe Experience Platform Messaging extension:
+
+```json
+{
+  "@adobe/react-native-aepcore": "^7.0.0",
+  "@adobe/react-native-aepedge": "^7.0.0",
+  "@adobe/react-native-aepedgeconsent": "^7.0.0",
+  "@adobe/react-native-aepedgeidentity": "^7.0.0",
+  "@adobe/react-native-aepmessaging": "https://gitpkg.now.sh/adobe/aepsdk-react-native/packages/messaging?content-card-ui"
+}
+```
+
+## Quick Start
+
+This is a simple app that's ready to run. Just follow these steps:
+
+In then root folder
+1. **Install dependencies**
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. **Prebuild the project**
    ```bash
-   npx expo start
+   npx expo prebuild
    ```
 
-In the output, you'll find options to open the app in a
+3. **Run the app**
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   **For Android:**
+   ```bash
+   npm run android
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   **For iOS:**
+   ```bash
+   cd ios
+   pod install
 
-## Get a fresh project
+   cd ..
+   npm run ios
+   ```
 
-When you're ready, run:
+## Usage
 
-```bash
-npm run reset-project
-```
+### Light/Dark modes Switching
+The app includes a theme switcher with three options:
+- **Light** - Force light theme
+- **Dark** - Force dark theme  
+- **System** - Follow device system preference
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Content Cards Display
+Content cards will automatically appear when:
+- The app launches (fires default `small_image` action)
+- You trigger a track action
+- Content is configured in Adobe Journey Optimizer for your surface
 
-## Learn more
+## Testing
 
-To learn more about developing your project with Expo, look at the following resources:
+### Available Test Actions
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+| Action | Template Type | Description |
+|--------|---------------|-------------|
+| `small_image` | Small Image | Default action fired on app start |
+| `large_image` | Large Image | Large format content cards |
+| `image_only` | Image Only | Image-focused content cards |
 
-## Join the community
+### Testing Flow
 
-Join our community of developers creating universal apps.
+1. **Launch the app** - Automatically fires `small_image` action
+2. **Switch themes** - Test light/dark mode functionality
+3. **Try different actions** - Use the input field to test various track actions
+4. **Observe content updates** - Watch content cards appear/refresh
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Documentation
+
+### Content Cards
+- [Content Cards Tutorial](https://github.com/adobe/aepsdk-react-native/blob/content-card-ui/packages/messaging/tutorials/ContentCards.md)
+- [Adobe Journey Optimizer Documentation](https://experienceleague.adobe.com/docs/journey-optimizer/using/ajo-home.html)
+
+### Expo Development
+- [Development builds](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator setup](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator setup](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go) - Limited sandbox for development
+
+### Learning Resources
+- [Expo documentation](https://docs.expo.dev/) - Learn fundamentals and advanced topics
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/) - Step-by-step tutorial
+
+## Troubleshooting
+
+### Common Issues
+
+**Content cards not appearing:**
+- Verify your App ID is correct
+- Check surface configuration matches your Adobe Journey Optimizer setup
+- Ensure content campaigns are active and published
+
+
+## License
+
+This project is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
+
+---
+
+**Created using Expo and Adobe Experience Platform**

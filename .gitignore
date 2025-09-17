@@ -38,6 +38,39 @@ yarn-error.*
 
 app-example
 
-# generated native folders
+# generated native folders (uncomment these if you want to exclude them)
+# Note: For this sample app, we include ios/android folders to make it easier to run
 /ios
 /android
+
+# Build artifacts
+**/build/
+**/dist/
+**/.gradle
+**/xcuserdata/
+**/Pods/
+**/DerivedData/
+
+# Local config files
+**/local.properties
+**/.bundle
+**/*.lock.json
+
+# Sensitive files
+**/*.keystore
+**/*.jks
+**/*.p12
+**/*.mobileprovision
+**/*.certSigningRequest
+
+# Cursor IDE
+.cursor/
+*.cursor-*
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
