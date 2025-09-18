@@ -85,6 +85,11 @@ This project uses the developer version of Adobe Experience Platform Messaging e
   "@adobe/react-native-aepmessaging": "https://gitpkg.now.sh/adobe/aepsdk-react-native/packages/messaging?content-card-ui"
 }
 ```
+For the user who build their app from scrach, they should install the developing `aepmessaging` library by 
+
+```
+npm install "https://gitpkg.now.sh/adobe/aepsdk-react-native/packages/messaging?content-card-ui"
+```
 
 ## Quick Start
 
@@ -105,6 +110,9 @@ In the root folder:
 3. **Run the app**
 
    a. **For Android:**
+
+   Make sure emulator is up and running
+
    ```bash
    npm run android
    ```
@@ -137,6 +145,8 @@ In the root folder:
       ```
 
       Then run:
+
+      Make sure simulator is up and running
 
       ```bash
       cd ios
