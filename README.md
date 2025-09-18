@@ -178,8 +178,16 @@ Content cards will automatically appear when:
 
 ## Documentation
 
-### Content Cards
-- [Content Cards Tutorial](https://github.com/adobe/aepsdk-react-native/blob/content-card-ui/packages/messaging/tutorials/ContentCards.md)
+### 📚 Essential Content Cards Documentation
+
+#### **🎯 React Native Content Cards Tutorial** - **START HERE**
+**[React Native Content Cards Tutorial](https://github.com/adobe/aepsdk-react-native/blob/content-card-ui/packages/messaging/tutorials/ContentCards.md)**
+
+#### **🎨 Content Card Customization Guide**
+**[Content Card Customization Guide](https://github.com/adobe/aepsdk-react-native/blob/content-card-ui/packages/messaging/tutorials/ContenCardCustomizationGuide.md)**
+
+
+### Additional Resources
 - [Adobe Journey Optimizer Documentation](https://experienceleague.adobe.com/docs/journey-optimizer/using/ajo-home.html)
 
 ### Expo Development
