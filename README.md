@@ -90,7 +90,8 @@ This project uses the developer version of Adobe Experience Platform Messaging e
 
 This is a simple app that's ready to run. Just follow these steps:
 
-In then root folder
+In the root folder:
+
 1. **Install dependencies**
    ```bash
    npm install
@@ -103,19 +104,46 @@ In then root folder
 
 3. **Run the app**
 
-   **For Android:**
+   a. **For Android:**
    ```bash
    npm run android
    ```
 
-   **For iOS:**
-   ```bash
-   cd ios
-   pod install
+   b. **For iOS:**
+      Due to a [known issue](https://github.com/adobe/aepsdk-react-native?tab=readme-ov-file#troubleshooting-and-known-issues):
+      ```
+      Underlying Objective-C module 'AEPRulesEngine' not found
+      ``` 
+      We need to add the below code to the `ios/Podfile`:
 
-   cd ..
-   npm run ios
-   ```
+      ```ruby
+      post_install do |installer|
+        react_native_post_install(
+          installer,
+          config[:reactNativePath],
+          :mac_catalyst_enabled => false,
+          :ccache_enabled => podfile_properties['apple.ccacheEnabled'] == 'true',
+        )
+        
+        # Configure AEP targets to avoid module interface verification issues
+        installer.pods_project.targets.each do |t|
+          if t.name.start_with?("AEP")
+            t.build_configurations.each do |bc|
+              bc.build_settings['OTHER_SWIFT_FLAGS'] = '$(inherited) -no-verify-emitted-module-interface'
+            end
+          end
+        end
+      end
+      ```
+
+      Then run:
+
+      ```bash
+      cd ios
+      pod install
+      cd ..
+      npm run ios
+      ```
 
 ## Usage
 
