@@ -16,7 +16,7 @@ import {
 import { Colors } from '../constants/Colors';
 import { useColorScheme } from '../hooks/useColorScheme';
 
-const THEME_OPTIONS: {
+const MODE_OPTIONS: {
   label: string;
   value: ColorSchemeName;
 }[] = [
@@ -27,7 +27,7 @@ const THEME_OPTIONS: {
 
 const ContentCardsScreen = () => {
   const [trackInput, setTrackInput] = useState('');
-  const [selectedTheme, setSelectedTheme] = useState<string>('System');
+  const [selectedMode, setSelectedMode] = useState<string>('System');
   const colorScheme = useColorScheme();
   
   // Using the surface specified in requirements
@@ -49,10 +49,10 @@ const ContentCardsScreen = () => {
     MobileCore.trackAction('small_image');
   }, []);
 
-  // Handle theme change
-  const handleThemeChange = useCallback(
-    (theme: string, value: ColorSchemeName) => {
-      setSelectedTheme(theme);
+  // Handle mode change
+  const handleModeChange = useCallback(
+    (mode: string, value: ColorSchemeName) => {
+      setSelectedMode(mode);
       Appearance.setColorScheme(value);
     },
     []
@@ -64,6 +64,18 @@ const ContentCardsScreen = () => {
     // ContentCardView handles its own visibility on dismiss
     // No need to manually filter out cards
   }, []);
+
+  // Simple style overrides demo - adds colored border and rounded corners
+  const simpleStyleOverrides = {
+    smallImageStyle: {
+      card: {
+        borderWidth: 2,
+        borderColor: '#007AFF', // Blue border
+        borderRadius: 12,       // Rounded corners
+        margin: 8,             // Spacing around cards
+      }
+    }
+  };
 
   // Handle custom track action with input text
   const handleTrackAction = async () => {
@@ -93,30 +105,30 @@ const ContentCardsScreen = () => {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      {/* Theme Switcher */}
+      {/*Light/Dark Mode Switcher */}
         <View style={styles.headerContainer}>
           <View
-            style={[styles.themeSwitcher, { backgroundColor: colors.viewBg }]}
+            style={[styles.modeSwitcher, { backgroundColor: colors.viewBg }]}
           >
-            {THEME_OPTIONS.map((option) => (
+            {MODE_OPTIONS.map((option) => (
               <TouchableOpacity
                 key={option.label}
                 style={[
-                  styles.themeOption,
-                  selectedTheme === option.label
+                  styles.modeOption,
+                  selectedMode === option.label
                     ? [
-                        styles.themeOptionSelected,
-                        { backgroundColor: colors.themeBg }
+                        styles.modeOptionSelected,
+                        { backgroundColor: colors.modeBg }
                       ]
-                    : styles.themeOptionUnselected
+                    : styles.modeOptionUnselected
                 ]}
-                onPress={() => handleThemeChange(option.label, option.value)}
+                onPress={() => handleModeChange(option.label, option.value)}
               >
                 <Text
                   style={[
-                    styles.themeOptionText,
+                    styles.modeOptionText,
                     {
-                      fontWeight: selectedTheme === option.label ? '600' : '400',
+                      fontWeight: selectedMode === option.label ? '600' : '400',
                       color: colors.text
                     }
                   ]}
@@ -177,6 +189,7 @@ const ContentCardsScreen = () => {
             <ContentCardView 
               template={card}
               listener={handleContentCardEvent}
+              styleOverrides={simpleStyleOverrides}
             />
           </View>
         )}
@@ -230,7 +243,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     alignItems: 'center',
   },
-  themeSwitcher: {
+  modeSwitcher: {
     width: '65%',
     borderRadius: 12,
     padding: 4,
@@ -238,7 +251,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  themeOption: {
+  modeOption: {
     flex: 1,
     paddingVertical: 8,
     paddingHorizontal: 12,
@@ -249,18 +262,18 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 2,
   },
-  themeOptionSelected: {
+  modeOptionSelected: {
     shadowColor: '#000',
     shadowOpacity: 0.1,
     elevation: 2,
   },
-  themeOptionUnselected: {
+  modeOptionUnselected: {
     backgroundColor: 'transparent',
     shadowColor: 'transparent',
     shadowOpacity: 0,
     elevation: 0,
   },
-  themeOptionText: {
+  modeOptionText: {
     fontSize: 14,
   },
   title: {

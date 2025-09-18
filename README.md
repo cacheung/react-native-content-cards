@@ -1,13 +1,13 @@
 # Adobe Journey Optimizer Content Cards Sample App
 
-A simple React Native Expo application demonstrating Adobe Journey Optimizer Content Cards implementation.
+A sample React Native Expo application demonstrating Adobe Journey Optimizer Content Cards implementation.
 
 **This app is ready to run out of the box.** If you want to connect it to your own Adobe Journey Optimizer setup, update the configuration settings below.
 
 ## Features
 
 - **Content Cards Integration** - Display personalized content from Adobe Journey Optimizer
-- **Dark Mode Support** - Light, Dark, and System theme options
+- **Dark Mode Support** - Light, Dark, and System mode options
 - **Custom Track Actions** - Test different track actions to trigger content
 - **Real-time Refresh** - Dynamic content updates
 - **Cross-platform** - iOS and Android support
@@ -148,9 +148,9 @@ In the root folder:
 ## Usage
 
 ### Light/Dark modes Switching
-The app includes a theme switcher with three options:
-- **Light** - Force light theme
-- **Dark** - Force dark theme  
+The app includes a mode switcher with three options:
+- **Light** - Force light mode
+- **Dark** - Force dark mode
 - **System** - Follow device system preference
 
 ### Content Cards Display
@@ -172,7 +172,7 @@ Content cards will automatically appear when:
 ### Testing Flow
 
 1. **Launch the app** - Automatically fires `small_image` action
-2. **Switch themes** - Test light/dark mode functionality
+2. **Switch modes** - Test light/dark mode functionality
 3. **Try different actions** - Use the input field to test various track actions
 4. **Observe content updates** - Watch content cards appear/refresh
 
@@ -207,5 +207,3 @@ Content cards will automatically appear when:
 This project is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
 
 ---
-
-**Created using Expo and Adobe Experience Platform**
