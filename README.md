@@ -194,7 +194,7 @@ Content cards will automatically appear when:
 - [React Native Content Cards Tutorial](https://github.com/adobe/aepsdk-react-native/blob/content-card-ui/packages/messaging/tutorials/ContentCards.md)
 
 #### **Content Card Customization Guide**
-- [Content Card Customization Guide](https://github.com/adobe/aepsdk-react-native/blob/content-card-ui/packages/messaging/tutorials/ContenCardCustomizationGuide.md)
+- [Content Card Customization Guide](https://github.com/adobe/aepsdk-react-native/blob/content-card-ui/packages/messaging/tutorials/ContentCardCustomizationGuide.md)
 
 
 ### Additional Resources
